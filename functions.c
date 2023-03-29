@@ -27,7 +27,7 @@ void write_sign(int num)
 }
 
 /**
- * int_to_write - write a integer to standard out
+ * write_int - write a integer to standard out
  * @num: unsigned int - integer
  *
  * Return: void
@@ -46,6 +46,6 @@ void write_int(unsigned int num)
         }
         div = num / 10;
         mod = num % 10;
-        int_to_write(div);
-        int_to_write(mod);
+        write_int(div);
+        write_int(mod);
 }
