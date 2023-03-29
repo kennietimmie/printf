@@ -25,3 +25,27 @@ void write_sign(int num)
                 write(1, &c, 1);
         }
 }
+
+/**
+ * int_to_write - write a integer to standard out
+ * @num: unsigned int - integer
+ *
+ * Return: void
+ */
+void write_int(unsigned int num)
+{
+        int div, mod;
+        if (num <= 9){
+                char ch;
+                mod = num % 10;
+                ch = mod + '0';
+
+                write(1, &ch, 1);
+                return;
+
+        }
+        div = num / 10;
+        mod = num % 10;
+        int_to_write(div);
+        int_to_write(mod);
+}
