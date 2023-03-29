@@ -13,6 +13,7 @@ unsigned int _printf(char *format, ...)
 {
 	va_list ap;
 	unsigned int len = 0;
+	int i;
 	char ch;
 
 	va_start(ap, format);
@@ -23,9 +24,13 @@ unsigned int _printf(char *format, ...)
 		{
 			switch (*++format)
 			{
-				case 'c':
+				case 'c':	/* char */
 					ch = va_arg(ap, int);
-					write(1, &ch, 1);
+					write_char(ch);
+					format++;
+					break;
+				case 'd':	/* int */
+					i = va_arg(ap, int);
 					format++;
 					break;
 				default:
