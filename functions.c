@@ -30,22 +30,26 @@ void write_sign(int num)
  * write_int - write a integer to standard out
  * @num: unsigned int - integer
  *
- * Return: void
+ * Return: int - number of characters in integer (num).
  */
-void write_int(unsigned int num)
+int write_int(unsigned int num)
 {
         int div, mod;
+	int characterLength = 0;
         if (num <= 9){
                 char ch;
                 mod = num % 10;
                 ch = mod + '0';
 
                 write(1, &ch, 1);
-                return;
+		characterLength++;
+                return (characterLength);
 
         }
         div = num / 10;
         mod = num % 10;
-        write_int(div);
-        write_int(mod);
+        characterLength += write_int(div);
+        characterLength += write_int(mod);
+	
+	return (characterLength);
 }
