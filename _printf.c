@@ -31,6 +31,8 @@ unsigned int _printf(char *format, ...)
 					break;
 				case 'd':	/* int */
 					i = va_arg(ap, int);
+					write_sign(i);
+					
 					format++;
 					break;
 
