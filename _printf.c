@@ -33,7 +33,7 @@ unsigned int _printf(char *format, ...)
 					i = va_arg(ap, int);
 					write_sign(i);
 					num = i;
-					write_int(num);
+					len += write_int(num);
 					format++;
 					break;
 
