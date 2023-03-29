@@ -9,9 +9,10 @@
  *
  * Return: Always void.
 */
-void _printf(char *format, ...)
+unsigned int _printf(char *format, ...)
 {
 	va_list ap;
+	unsigned int len = 0;
 	char ch;
 
 	va_start(ap, format);
@@ -28,8 +29,11 @@ void _printf(char *format, ...)
 		}
 		else
 		{
+			len++;
 			write(1, format++, 1);
 		}
 	}
 	va_end(ap);
+
+	return (len);
 }
