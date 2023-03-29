@@ -16,22 +16,27 @@ unsigned int _printf(char *format, ...)
 	char ch;
 
 	va_start(ap, format);
-	while (*format != '\0')
+	while (*format)
 	{
-		if (*(format) == '%')
+		len++;
+		if (*format == '%')
 		{
-			if (*(format + 1) == 'c')
+			switch (*++format)
 			{
-				ch = va_arg(ap, int);
-				write(1, &ch, 1);
-				format += 2;
-			}
+				case 'c':
+					ch = va_arg(ap, int);
+					write(1, &ch, 1);
+					format++;
+					break;
+				default:
+					write(1, format, 1);
+				}
 		}
 		else
 		{
-			len++;
 			write(1, format++, 1);
 		}
+
 	}
 	va_end(ap);
 
