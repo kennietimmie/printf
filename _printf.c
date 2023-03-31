@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 
 /**
  * _printf - print to standard output
@@ -12,7 +13,7 @@
 unsigned int _printf(char *format, ...)
 {
 	va_list ap;
-	unsigned int len = 0;
+	unsigned int len = 0, num;
 	int i;
 	char ch, *ptr;
 
@@ -36,6 +37,11 @@ unsigned int _printf(char *format, ...)
 					len += write_int(absolute_value(i)) - 1;
 					format++;
 					break;
+				case 'u':
+					num = va_arg(ap, int);
+					len += write_int(num) - 1;
+					format++;
+					break;
 				case 's':	/* char * */
 					len--;
 					ptr = va_arg(ap, char *);
@@ -46,6 +52,15 @@ unsigned int _printf(char *format, ...)
 					}
 					format++;
 					break;
+				case 'r':
+					ch = *(format - 1);
+					write(1, &ch, 1);
+					ch = *format;
+					write(1, &ch, 1);
+					len++;
+					format++;
+					break;
+
 				default:
 					write(1, format, 1);
 					format++;
