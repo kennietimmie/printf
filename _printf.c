@@ -12,7 +12,7 @@
 unsigned int _printf(char *format, ...)
 {
 	va_list ap;
-	unsigned int len = 0, num;
+	unsigned int len = 0;
 	int i;
 	char ch, *ptr;
 
@@ -33,8 +33,7 @@ unsigned int _printf(char *format, ...)
 				case 'd':	/* int */
 					i = va_arg(ap, int);
 					write_sign(i);
-					num = i;
-					len += write_int(num) - 1;
+					len += write_int(absolute_value(i)) - 1;
 					format++;
 					break;
 				case 's':	/* char * */

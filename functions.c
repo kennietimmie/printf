@@ -53,3 +53,17 @@ int write_int(unsigned int num)
 	
 	return (characterLength);
 }
+
+/*
+ * absolute_value - returns the absolute value.
+ * @num: int - integer
+ *
+ * Return: int - absolute value.
+ */
+int absolute_value(int num)
+{
+	if (num < 0)
+		return (num * -1);
+
+	return (num);
+}
