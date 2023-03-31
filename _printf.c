@@ -48,6 +48,7 @@ unsigned int _printf(char *format, ...)
 					break;
 				default:
 					write(1, format, 1);
+					format++;
 				}
 		}
 		else
